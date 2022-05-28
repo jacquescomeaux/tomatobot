@@ -30,7 +30,7 @@ tomatoFile :: FilePath
 tomatoFile = "tomato.png"
 
 accessToken :: ByteString
-accessToken = "nj8X8tB3TC0MoZdMLhIUA4G89r9IlQfVej97Mhg3"
+accessToken = "t2YhlxxwZmn2cWfkAomjMc6BgVPMaC5NRkqHzGQl"
 
 botId :: Text
 botId = "713bcb4a4604006c944804552c"
