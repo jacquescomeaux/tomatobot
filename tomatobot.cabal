@@ -13,11 +13,9 @@ author:         Author name here
 maintainer:     example@example.com
 copyright:      2022 Author name here
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
-    ChangeLog.md
 
 source-repository head
   type: git
@@ -66,9 +64,17 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , conduit-extra
+    , http-types
     , modern-uri
     , req
     , rio
+    , unliftio
+    , wai
+    , wai-conduit
+    , warp
   default-language: Haskell2010
 
 executable tomatobot-exe
@@ -110,54 +116,16 @@ executable tomatobot-exe
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , conduit-extra
+    , http-types
     , modern-uri
     , req
     , rio
     , tomatobot
-  default-language: Haskell2010
-
-test-suite tomatobot-test
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  other-modules:
-      Paths_tomatobot
-  hs-source-dirs:
-      test
-  default-extensions:
-      ApplicativeDo
-      BangPatterns
-      ConstraintKinds
-      DataKinds
-      EmptyCase
-      ExistentialQuantification
-      FlexibleContexts
-      FlexibleInstances
-      GADTs
-      GeneralizedNewtypeDeriving
-      InstanceSigs
-      KindSignatures
-      LambdaCase
-      MultiParamTypeClasses
-      NoImplicitPrelude
-      NoStarIsType
-      OverloadedStrings
-      PatternSynonyms
-      PolyKinds
-      RankNTypes
-      ScopedTypeVariables
-      StandaloneDeriving
-      StandaloneKindSignatures
-      TupleSections
-      TypeApplications
-      TypeFamilies
-      TypeFamilyDependencies
-      TypeOperators
-  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wredundant-constraints -Wmissing-local-signatures -Wmissing-export-lists -Wpartial-fields -Wmonomorphism-restriction -Widentities -Wno-unticked-promoted-constructors -fprint-expanded-synonyms -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      aeson
-    , base >=4.7 && <5
-    , modern-uri
-    , req
-    , rio
-    , tomatobot
+    , unliftio
+    , wai
+    , wai-conduit
+    , warp
   default-language: Haskell2010

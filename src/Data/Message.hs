@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveGeneric #-}
 module Data.Message
     ( InMessage (..)
     , GMIUrl (..)
@@ -21,15 +22,17 @@ import qualified Text.URI as URI
 
 data InMessage = InMessage
     { hasAttach :: !Bool
-    , groupId   :: !Word
+    , groupId   :: !Text
     , isUser    :: !Bool
     , text      :: !Text
-    } deriving Show
+    } deriving (Show, Generic)
+
+instance NFData InMessage
 
 instance Ae.FromJSON InMessage where
     parseJSON = Ae.withObject "InMessage" $ \o -> InMessage
         <$> (o .: "attachments" >>= Ae.withArray "attachments" (pure . not . null))
-        <*> o .: "group-id"
+        <*> o .: "group_id"
         <*> ((==) ("user" :: Text) <$> o .: "sender_type")
         <*> o .: "text"
 
