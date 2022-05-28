@@ -1,0 +1,163 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           tomatobot
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/tomatobot#readme>
+homepage:       https://github.com/githubuser/tomatobot#readme
+bug-reports:    https://github.com/githubuser/tomatobot/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2022 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/tomatobot
+
+library
+  exposed-modules:
+      Data.Message
+      Data.Tomato
+      Tomato.Post
+      Tomato.Validate
+  other-modules:
+      Paths_tomatobot
+  hs-source-dirs:
+      src
+  default-extensions:
+      ApplicativeDo
+      BangPatterns
+      ConstraintKinds
+      DataKinds
+      EmptyCase
+      ExistentialQuantification
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoStarIsType
+      OverloadedStrings
+      PatternSynonyms
+      PolyKinds
+      RankNTypes
+      ScopedTypeVariables
+      StandaloneDeriving
+      StandaloneKindSignatures
+      TupleSections
+      TypeApplications
+      TypeFamilies
+      TypeFamilyDependencies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wredundant-constraints -Wmissing-local-signatures -Wmissing-export-lists -Wpartial-fields -Wmonomorphism-restriction -Widentities -Wno-unticked-promoted-constructors -fprint-expanded-synonyms
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , modern-uri
+    , req
+    , rio
+  default-language: Haskell2010
+
+executable tomatobot-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_tomatobot
+  hs-source-dirs:
+      app
+  default-extensions:
+      ApplicativeDo
+      BangPatterns
+      ConstraintKinds
+      DataKinds
+      EmptyCase
+      ExistentialQuantification
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoStarIsType
+      OverloadedStrings
+      PatternSynonyms
+      PolyKinds
+      RankNTypes
+      ScopedTypeVariables
+      StandaloneDeriving
+      StandaloneKindSignatures
+      TupleSections
+      TypeApplications
+      TypeFamilies
+      TypeFamilyDependencies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wredundant-constraints -Wmissing-local-signatures -Wmissing-export-lists -Wpartial-fields -Wmonomorphism-restriction -Widentities -Wno-unticked-promoted-constructors -fprint-expanded-synonyms -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , modern-uri
+    , req
+    , rio
+    , tomatobot
+  default-language: Haskell2010
+
+test-suite tomatobot-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_tomatobot
+  hs-source-dirs:
+      test
+  default-extensions:
+      ApplicativeDo
+      BangPatterns
+      ConstraintKinds
+      DataKinds
+      EmptyCase
+      ExistentialQuantification
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoStarIsType
+      OverloadedStrings
+      PatternSynonyms
+      PolyKinds
+      RankNTypes
+      ScopedTypeVariables
+      StandaloneDeriving
+      StandaloneKindSignatures
+      TupleSections
+      TypeApplications
+      TypeFamilies
+      TypeFamilyDependencies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wredundant-constraints -Wmissing-local-signatures -Wmissing-export-lists -Wpartial-fields -Wmonomorphism-restriction -Widentities -Wno-unticked-promoted-constructors -fprint-expanded-synonyms -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , modern-uri
+    , req
+    , rio
+    , tomatobot
+  default-language: Haskell2010

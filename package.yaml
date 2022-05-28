@@ -1,0 +1,84 @@
+name:                tomatobot
+version:             0.1.0.0
+github:              "githubuser/tomatobot"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2022 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/tomatobot#readme>
+
+dependencies:
+- aeson
+- base >= 4.7 && < 5
+- modern-uri
+- req
+- rio
+
+library:
+  source-dirs: src
+
+executables:
+  tomatobot-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tomatobot
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Wincomplete-record-updates
+- -Wredundant-constraints
+- -Wmissing-local-signatures
+- -Wmissing-export-lists
+- -Wpartial-fields
+- -Wmonomorphism-restriction
+- -Widentities
+- -Wno-unticked-promoted-constructors
+- -fprint-expanded-synonyms
+
+default-extensions:
+- ApplicativeDo
+- BangPatterns
+- ConstraintKinds
+- DataKinds
+- EmptyCase
+- ExistentialQuantification
+- FlexibleContexts
+- FlexibleInstances
+- GADTs
+- GeneralizedNewtypeDeriving
+- InstanceSigs
+- KindSignatures
+- LambdaCase
+- MultiParamTypeClasses
+- NoImplicitPrelude
+- NoStarIsType
+- OverloadedStrings
+- PatternSynonyms
+- PolyKinds
+- RankNTypes
+- ScopedTypeVariables
+- StandaloneDeriving
+- StandaloneKindSignatures
+- TupleSections
+- TypeApplications
+- TypeFamilies
+- TypeFamilyDependencies
+- TypeOperators
