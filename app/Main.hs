@@ -23,6 +23,7 @@ import Network.HTTP.Types (status200, status500)
 import Network.Wai (responseBuilder, responseLBS, Response)
 import Network.Wai.Conduit (sourceRequestBody)
 import Network.Wai.Handler.Warp (run)
+import System.Environment (getArgs)
 
 import Data.Message (InMessage (..))
 import Data.Tomato (Tomato)
@@ -31,6 +32,7 @@ import Tomato.Validate (isTomato)
 
 import qualified Data.Aeson as Ae
 import qualified Data.ByteString.Lazy.Char8 as BL8
+import qualified RIO.List.Partial as L'
 
 
 data App = App
@@ -77,19 +79,24 @@ tomatoBot = do
   logInfo $ "All done"
 
 main :: IO ()
-main = run 3000 $ \request send -> do
-    eres <- tryAnyDeep $ do
-      val <- runConduit
-           $ sourceRequestBody request
-          .| sinkParser Ae.json
-      case Ae.fromJSON val of
-          Ae.Success r -> return r
-          Ae.Error _s  -> error "handle this later"
-    case eres of
-      Left e -> send $ errorResponse e
-      Right inMes -> do
-          when (isTomato inMes) $ runApp tomatoBot
-          send $ validResponse inMes
+main = do
+    args <- getArgs
+    when (null args) (error "no port")
+    let portS = readMaybe $ L'.head args
+    let port = maybe (error "invalid port") id portS
+    run port $ \request send -> do
+        eres <- tryAnyDeep $ do
+          val <- runConduit
+               $ sourceRequestBody request
+              .| sinkParser Ae.json
+          case Ae.fromJSON val of
+              Ae.Success r -> return r
+              Ae.Error _s  -> error "handle this later"
+        case eres of
+          Left e -> send $ errorResponse e
+          Right inMes -> do
+              when (isTomato inMes) $ runApp tomatoBot
+              send $ validResponse inMes
   where
     errorResponse :: SomeException -> Response
     errorResponse e = responseLBS
