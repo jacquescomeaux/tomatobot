@@ -30,6 +30,7 @@ dependencies:
 - http-types
 - bytestring
 - unliftio
+- unordered-containers
 - conduit
 - conduit-extra
 

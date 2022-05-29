@@ -23,12 +23,13 @@ import Network.HTTP.Req
     , responseBody
     )
 
+import Data.HashMap.Strict (insert)
+
 import Tomato.Data.Except (DecodeException (..))
 import Tomato.Data.Message (GMIUrl (..), OutMessage (..))
 import Tomato.App (App (..))
 
 import qualified Data.Aeson as Ae
-import qualified Data.Aeson.KeyMap as Ae
 import qualified RIO.Text as T
 
 
@@ -59,7 +60,7 @@ postMessage outMes = do
     accessToken <- asks appToken
     let url = https "api.groupme.com" /: "v3" /: "bots" /: "post"
         outMes' = case Ae.toJSON outMes of
-            Ae.Object o -> Ae.Object $ Ae.insert "bot_id" (Ae.toJSON botId) o
+            Ae.Object o -> Ae.Object $ insert "bot_id" (Ae.toJSON botId) o
             _           -> error "exceptional"
     rr $ req POST url (ReqBodyJson outMes') ignoreResponse $
         header "X-Access-Token" accessToken
