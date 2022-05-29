@@ -6,7 +6,7 @@ module Tomato.Data.Tomato
 
 import RIO
 
-import Data.Aeson ((.:))
+import Data.Aeson ((.:), (.:!))
 import Network.HTTP.Req (Url, Scheme (Https), useHttpsURI)
 
 import qualified Data.Aeson as Ae
@@ -20,7 +20,7 @@ data Tomato = Tomato
     , height      :: !Word
     , color       :: !Text
     , blur_hash   :: !Text
-    , description :: !Text
+    , description :: !(Maybe Text)
     , urls        :: !Urls
     , links       :: !Links
     } deriving Show
@@ -32,7 +32,7 @@ instance Ae.FromJSON Tomato where
         <*> o .: "height"
         <*> o .: "color"
         <*> o .: "blur_hash"
-        <*> o .: "description"
+        <*> o .:! "description"
         <*> o .: "urls"
         <*> o .: "links"
 
