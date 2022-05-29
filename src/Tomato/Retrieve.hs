@@ -44,7 +44,7 @@ queryTomato = do
         "client_id" =: clientId
     tomato <- case Ae.fromJSON (responseBody js) of
         Ae.Success r -> pure r
-        Ae.Error s -> throwM $ DecodeException $ T.pack s
+        Ae.Error s -> throwM $ DecodeException $ "Get tomato url" <> T.pack s
     return tomato
 
 -- | Download a specific tomato

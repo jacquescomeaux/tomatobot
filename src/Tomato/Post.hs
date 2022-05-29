@@ -50,7 +50,7 @@ uploadTomato = do
         header "Content-Type" "image/png"
     gmURL <- case Ae.fromJSON (responseBody js) of
         Ae.Success r -> pure r
-        Ae.Error s -> throwM $ DecodeException $ T.pack s
+        Ae.Error s -> throwM $ DecodeException $ "Get groupme url:" <> T.pack s
     return gmURL
 
 -- | Post a message to the group with image as attachment

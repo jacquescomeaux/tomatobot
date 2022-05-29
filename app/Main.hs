@@ -32,7 +32,7 @@ runServer port = run port $ \request send -> do
           .| sinkParser Ae.json
       case Ae.fromJSON val of
           Ae.Success r -> return r
-          Ae.Error s -> throwM $ DecodeException $ T.pack s
+          Ae.Error s -> throwM $ DecodeException $ "Recieve message: " <> T.pack s
     case eres of
       Left e -> send $ errorResponse e
       Right inMes -> do
