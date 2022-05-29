@@ -1,4 +1,4 @@
-module Data.Tomato
+module Tomato.Data.Tomato
     ( Links (..)
     , Tomato (..)
     , Urls (..)

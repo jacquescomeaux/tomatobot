@@ -4,9 +4,10 @@ module Tomato.Validate
 
 import RIO
 
-import Data.Message (InMessage (..))
+import Tomato.Data.Message (InMessage (..))
 
 
+-- | Check if a message is a tomato request
 isTomato :: InMessage -> Bool
 isTomato m =
     not (hasAttach m) &&

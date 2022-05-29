@@ -1,5 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
-module Data.Message
+module Tomato.Data.Message
     ( InMessage (..)
     , GMIUrl (..)
     , OutMessage (..)
