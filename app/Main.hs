@@ -23,6 +23,7 @@ import qualified Data.ByteString.Lazy.Char8 as BL8
 import qualified RIO.List.Partial as L'
 import qualified RIO.Text as T
 
+-- | Listen for tomato message and respond with tomato
 runServer :: Int -> IO ()
 runServer port = run port $ \request send -> do
     eres <- tryAnyDeep $ do
